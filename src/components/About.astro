@@ -2,7 +2,7 @@
 import { company } from '../data/site';
 ---
 
-<section id="about" aria-labelledby="about-title">
+<section id="about" class="section-grid" aria-labelledby="about-title">
   <h2 id="about-title">회사 소개</h2>
   <dl>
     <div>
@@ -23,3 +23,28 @@ import { company } from '../data/site';
     </div>
   </dl>
 </section>
+
+<style>
+  dl {
+    display: grid;
+    gap: 2rem;
+  }
+
+  dt {
+    margin-bottom: 0.4rem;
+    color: var(--color-muted);
+    font-size: 0.875rem;
+  }
+
+  dd {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  @media (min-width: 48rem) {
+    dl {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2.5rem;
+    }
+  }
+</style>

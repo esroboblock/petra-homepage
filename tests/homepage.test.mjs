@@ -21,6 +21,17 @@ test('generated homepage preserves the approved public contract', () => {
   const html = readFileSync(resolve(repositoryRoot, 'dist/index.html'), 'utf8');
 
   assert.match(html, /<html[^>]+lang="ko"/);
+  // Catch a removed keyboard bypass, broken section navigation, or mobile viewport.
+  assert.match(html, /<body[^>]*>\s*<a[^>]+href="#main-content"[^>]*>본문으로 이동<\/a>/);
+  assert.match(html, /<main[^>]+id="main-content"/);
+  assert.match(html, /<meta[^>]+name="viewport"[^>]+content="width=device-width, initial-scale=1"/);
+  const navigation = html.match(/<nav\b[^>]*>([\s\S]*?)<\/nav>/)?.[1] ?? '';
+  assert.match(navigation, /href="#hero"/);
+  assert.match(navigation, /href="#about"/);
+  assert.match(navigation, /href="#services"/);
+  assert.match(navigation, /href="#contact"/);
+  const footer = html.match(/<footer\b[^>]*>([\s\S]*?)<\/footer>/)?.[1] ?? '';
+  assert.match(footer, /href="https:\/\/petra\.parts"/);
   assert.match(html, /id="hero"/);
   assert.match(html, /id="about"/);
   assert.match(html, /id="services"/);

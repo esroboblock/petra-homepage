@@ -2,9 +2,32 @@
 import { company } from '../data/site';
 ---
 
-<section id="contact" aria-labelledby="contact-title">
+<section id="contact" class="section-grid" aria-labelledby="contact-title">
   <h2 id="contact-title">문의</h2>
-  <address>{company.location}</address>
-  <p><a href={`mailto:${company.email}`}>{company.email}</a></p>
-  <a href={`mailto:${company.email}`}>문의하기</a>
+  <div class="contact-content">
+    <address>{company.location}</address>
+    <p><a class="email" href={`mailto:${company.email}`}>{company.email}</a></p>
+    <a class="button-link" href={`mailto:${company.email}`}>문의하기</a>
+  </div>
 </section>
+
+<style>
+  .contact-content {
+    display: grid;
+    justify-items: start;
+    gap: 1.5rem;
+    min-width: 0;
+  }
+
+  address {
+    color: var(--color-muted);
+    font-style: normal;
+  }
+
+  .email {
+    font-size: clamp(1.25rem, 3vw, 2.25rem);
+    letter-spacing: -0.04em;
+    text-decoration-thickness: 1px;
+    overflow-wrap: anywhere;
+  }
+</style>

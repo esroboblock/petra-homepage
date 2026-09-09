@@ -16,25 +16,217 @@ const {
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <title>{title}</title>
   </head>
   <body>
-    <header>
-      <a href="#hero" aria-label="PETRA 홈">{company.englishName}</a>
+    <a class="skip-link" href="#main-content">본문으로 이동</a>
+    <header class="container">
+      <a class="wordmark" href="#hero" aria-label="PETRA 홈">{company.englishName}</a>
       <nav aria-label="주요 탐색">
         <ul>
           {navigation.map(({ label, href }) => <li><a href={href}>{label}</a></li>)}
         </ul>
       </nav>
     </header>
-    <main>
+    <main id="main-content" class="container" tabindex="-1">
       <slot />
     </main>
-    <footer>
+    <footer class="container">
       <p>{company.legalName}</p>
       <a href={`https://${company.domain}`}>{company.domain}</a>
     </footer>
   </body>
 </html>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --font-body: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-wordmark: 'Arial Black', Arial, sans-serif;
+    --color-background: #f7f5f0;
+    --color-text: #242722;
+    --color-muted: #64675f;
+    --color-border: #d8d9d0;
+    --color-accent: #9b421f;
+    --space-section: clamp(4rem, 8vw, 7.5rem);
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  p,
+  dl,
+  dd,
+  ul {
+    margin: 0;
+  }
+
+  h2 {
+    font-size: clamp(1.4rem, 2.3vw, 1.9rem);
+    line-height: 1.3;
+    letter-spacing: -0.04em;
+  }
+
+  h3 {
+    font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+    line-height: 1.5;
+    letter-spacing: -0.035em;
+  }
+
+  p,
+  dd,
+  li {
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+
+  a {
+    color: inherit;
+    text-underline-offset: 0.25em;
+    transition: color 150ms ease;
+  }
+
+  a:hover {
+    color: var(--color-accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 5px;
+  }
+
+  .container {
+    width: min(100% - 2.5rem, 72rem);
+    margin-inline: auto;
+  }
+
+  section {
+    padding-block: var(--space-section);
+    border-bottom: 1px solid var(--color-border);
+    scroll-margin-top: 1.5rem;
+  }
+
+  .section-grid {
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .button-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    padding: 0.65rem 1.5rem;
+    border: 1px solid var(--color-text);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease;
+  }
+
+  .button-link:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-background);
+  }
+
+  header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 2rem;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .wordmark {
+    font-family: var(--font-wordmark);
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    text-decoration: none;
+  }
+
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: clamp(1rem, 3vw, 2rem);
+    padding: 0;
+    list-style: none;
+  }
+
+  nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    font-size: 0.875rem;
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    text-decoration: underline;
+  }
+
+  footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.75rem 2rem;
+    padding-block: 2rem;
+    color: var(--color-muted);
+    font-size: 0.875rem;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: 0.75rem;
+    left: 1.25rem;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .skip-link:focus {
+    z-index: 1;
+    width: auto;
+    height: auto;
+    padding: 0.75rem 1rem;
+    clip-path: none;
+    background: var(--color-background);
+  }
+
+  @media (min-width: 48rem) {
+    .section-grid {
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition: none !important;
+    }
+  }
+</style>
