@@ -1,0 +1,10 @@
+---
+import { company } from '../data/site';
+---
+
+<section id="contact" aria-labelledby="contact-title">
+  <h2 id="contact-title">문의</h2>
+  <address>{company.location}</address>
+  <p><a href={`mailto:${company.email}`}>{company.email}</a></p>
+  <a href={`mailto:${company.email}`}>문의하기</a>
+</section>

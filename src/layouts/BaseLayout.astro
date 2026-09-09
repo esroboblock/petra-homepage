@@ -1,0 +1,40 @@
+---
+import { company, navigation } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'PETRA | 전자부품 수급·유통',
+  description = 'PETRA는 전기·전자부품의 수급 가능성을 검토하고 공급을 협의합니다.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header>
+      <a href="#hero" aria-label="PETRA 홈">{company.englishName}</a>
+      <nav aria-label="주요 탐색">
+        <ul>
+          {navigation.map(({ label, href }) => <li><a href={href}>{label}</a></li>)}
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <p>{company.legalName}</p>
+      <a href={`https://${company.domain}`}>{company.domain}</a>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+---
+import { businessAreas, primaryService } from '../data/site';
+---
+
+<section id="services" aria-labelledby="services-title">
+  <h2 id="services-title">서비스</h2>
+  <article>
+    <h3>{primaryService.name}</h3>
+    <p>{primaryService.description}</p>
+  </article>
+  <div>
+    <h3>사업 분야</h3>
+    <ul>
+      {businessAreas.map((area) => <li>{area}</li>)}
+    </ul>
+  </div>
+</section>
