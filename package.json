@@ -9,7 +9,8 @@
     "test": "node --test tests/*.test.mjs"
   },
   "devDependencies": {
+    "@astrojs/check": "0.9.10",
     "astro": "7.3.2",
-    "typescript": "7.0.2"
+    "typescript": "6.0.3"
   }
 }

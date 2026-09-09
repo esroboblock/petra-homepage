@@ -6,7 +6,7 @@
 
 **Architecture:** Keep the homepage route thin and compose it from a shared page layout plus four section components. Store approved public facts and service copy in one typed data module so later standalone pages can reuse the same content without importing page markup. Verify the generated static HTML with Node's built-in test runner and verify the final presentation through fresh desktop and mobile browser checks.
 
-**Tech Stack:** Astro 7.3.2, TypeScript 7.0.2, Node.js 22+, npm, Node built-in test runner
+**Tech Stack:** Astro 7.3.2, TypeScript 6.0.3, Node.js 22+, npm, Node built-in test runner
 
 **Spec:** [GitHub Issue #2](https://github.com/esroboblock/petra-homepage/issues/2)
 
@@ -59,7 +59,7 @@
 
 - [ ] **Step 1: Add minimal Astro tooling configuration**
 
-Create `package.json` with `private: true`, `type: "module"`, Astro `7.3.2`, TypeScript `7.0.2`, and scripts with these contracts:
+Create `package.json` with `private: true`, `type: "module"`, Astro `7.3.2`, TypeScript `6.0.3`, and scripts with these contracts:
 
 ```json
 {
