@@ -36,10 +36,13 @@ test('generated homepage preserves the approved public contract', () => {
   assert.match(html, /id="about"/);
   assert.match(html, /id="services"/);
   assert.match(html, /id="contact"/);
-  assert.match(html, /\(주\)페트라/);
-  assert.match(html, /2026년 5월/);
-  assert.match(html, /정동익/);
-  assert.match(html, /서울특별시 구로구/);
+  const about = html.slice(html.indexOf('id="about"'), html.indexOf('id="services"'));
+  assert.match(about, /\(주\)페트라/);
+  assert.match(about, /PETRA/);
+  assert.match(about, /2026년 5월/);
+  assert.match(about, /정동익/);
+  assert.match(about, /서울특별시 구로구/);
+  assert.match(about, /petra\.parts/);
   assert.match(html, /전자부품 수급·유통/);
   assert.match(html, /href="mailto:petra@petra\.parts"/);
   assert.match(html, />petra@petra\.parts</);

@@ -6,7 +6,7 @@
 
 **Architecture:** Keep the homepage route thin and compose it from a shared page layout plus four section components. Store approved public facts and service copy in one typed data module so later standalone pages can reuse the same content without importing page markup. Verify the generated static HTML with Node's built-in test runner and verify the final presentation through fresh desktop and mobile browser checks.
 
-**Tech Stack:** Astro 7.3.2, TypeScript 6.0.3, Node.js 22+, npm, Node built-in test runner
+**Tech Stack:** Astro 7.3.2, TypeScript 6.0.3, Node.js 22.12.0+, npm, Node built-in test runner
 
 **Spec:** [GitHub Issue #2](https://github.com/esroboblock/petra-homepage/issues/2)
 
@@ -170,7 +170,7 @@ Component styles may remain scoped to their component; global tokens, reset, hea
 
 - [ ] **Step 4: Update README for maintainers**
 
-Document Node.js 22+, `npm install`, `npm run dev`, `npm test`, `npm run check`, and `npm run build`. Describe `src/data/site.ts` as the approved public-copy source and state that GitHub Pages/custom-domain deployment remains out of scope for Issue #2.
+Document Node.js 22.12.0+, `npm install`, `npm run dev`, `npm test`, `npm run check`, and `npm run build`. Describe `src/data/site.ts` as the approved public-copy source and state that GitHub Pages/custom-domain deployment remains out of scope for Issue #2.
 
 - [ ] **Step 5: Verify GREEN and inspect both target viewport classes**
 
