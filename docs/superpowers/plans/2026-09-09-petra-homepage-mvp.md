@@ -21,7 +21,7 @@
 - Show `petra@petra.parts` as text and use `mailto:petra@petra.parts` for the `문의하기` action.
 - Show only the approved company facts from Issue #2: `(주)페트라`, `PETRA`, `2026년 5월`, `정동익`, `서울특별시 구로구`, and `petra.parts`.
 - Do not add deployment, DNS, custom-domain, backend form, CMS, multilingual switching, catalog, case study, analytics, or complex animation work.
-- Do not read or import files from `/home/jeong/petra`; this public repository must remain self-contained.
+- Do not read or import files from the private internal repository; this public repository must remain self-contained.
 
 ## File Structure
 
