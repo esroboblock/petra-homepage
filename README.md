@@ -37,4 +37,6 @@ npm run build
 - [`content/messaging.md`](content/messaging.md): 홈페이지 메시지 후보
 - [`content/facts-to-confirm.md`](content/facts-to-confirm.md): 게시 전 확인 목록
 
-홈페이지는 Astro로 구현한 단일 정적 페이지다. GitHub Pages 배포와 사용자 지정 도메인 연결은 Issue #2의 범위에 포함하지 않으며 후속 작업으로 진행한다.
+홈페이지는 Astro로 구현한 단일 정적 페이지이며, 기본 공개 주소는
+[`https://esroboblock.github.io/petra-homepage/`](https://esroboblock.github.io/petra-homepage/)다.
+Pull request에서는 설치·정적 검사·테스트·빌드만 수행하고, 검증을 통과한 `main` 커밋만 GitHub Pages에 자동 배포한다. `petra.parts` 사용자 지정 도메인 연결은 후속 작업으로 진행한다.
