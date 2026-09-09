@@ -1,0 +1,58 @@
+---
+import { company } from '../data/site';
+---
+
+<section id="about" class="section-grid" aria-labelledby="about-title">
+  <h2 id="about-title">회사 소개</h2>
+  <dl>
+    <div>
+      <dt>상호</dt>
+      <dd>{company.legalName}</dd>
+    </div>
+    <div>
+      <dt>영문명</dt>
+      <dd>{company.englishName}</dd>
+    </div>
+    <div>
+      <dt>설립</dt>
+      <dd>{company.founded}</dd>
+    </div>
+    <div>
+      <dt>대표</dt>
+      <dd>{company.representative}</dd>
+    </div>
+    <div>
+      <dt>소재지</dt>
+      <dd>{company.location}</dd>
+    </div>
+    <div>
+      <dt>도메인</dt>
+      <dd>{company.domain}</dd>
+    </div>
+  </dl>
+</section>
+
+<style>
+  dl {
+    display: grid;
+    gap: 2rem;
+  }
+
+  dt {
+    margin-bottom: 0.4rem;
+    color: var(--color-muted);
+    font-size: 0.875rem;
+  }
+
+  dd {
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  @media (min-width: 48rem) {
+    dl {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2.5rem;
+    }
+  }
+</style>
