@@ -37,6 +37,30 @@ npm run build
 - [`content/messaging.md`](content/messaging.md): 홈페이지 메시지 후보
 - [`content/facts-to-confirm.md`](content/facts-to-confirm.md): 게시 전 확인 목록
 
-홈페이지는 Astro로 구현한 단일 정적 페이지이며, 기본 공개 주소는
-[`https://esroboblock.github.io/petra-homepage/`](https://esroboblock.github.io/petra-homepage/)다.
-Pull request에서는 설치·정적 검사·테스트·빌드만 수행하고, 검증을 통과한 `main` 커밋만 GitHub Pages에 자동 배포한다. `petra.parts` 사용자 지정 도메인 연결은 후속 작업으로 진행한다.
+홈페이지는 Astro로 구현한 단일 정적 페이지이며, 대표 공개 주소는
+[`https://petra.parts`](https://petra.parts)다. `www.petra.parts`는 같은 GitHub Pages 사이트를
+가리키며 대표 주소로 리디렉션한다. Pull request에서는 설치·정적 검사·테스트·빌드만 수행하고,
+검증을 통과한 `main` 커밋만 GitHub Pages에 자동 배포한다.
+
+## 사용자 지정 도메인
+
+GitHub Pages의 Custom domain은 `petra.parts`로 설정한다. DNS 제공자에는 다음 웹 연결 레코드만
+두며, 값은 2026-09-09 GitHub Pages 공식 안내를 기준으로 한다.
+
+| 호스트 | 유형 | 값 |
+| --- | --- | --- |
+| `@` | `A` | `185.199.108.153` |
+| `@` | `A` | `185.199.109.153` |
+| `@` | `A` | `185.199.110.153` |
+| `@` | `A` | `185.199.111.153` |
+| `@` | `AAAA` | `2606:50c0:8000::153` |
+| `@` | `AAAA` | `2606:50c0:8001::153` |
+| `@` | `AAAA` | `2606:50c0:8002::153` |
+| `@` | `AAAA` | `2606:50c0:8003::153` |
+| `www` | `CNAME` | `esroboblock.github.io` |
+
+기존 MX/TXT/SPF/DKIM 등 메일 관련 레코드는 웹 연결과 별개이며 변경하지 않는다. DNS를 다시
+변경할 때는 먼저 전체 레코드를 별도로 백업하고, GitHub의 최신 공식 안내와 저장소 Pages 설정을
+재확인한다. 웹 연결을 되돌릴 때도 백업본과 대조해 위 웹 레코드 및 Pages Custom domain만
+제거하거나 이전 값으로 복구하며 메일 레코드는 건드리지 않는다. Actions 방식 배포에서는
+저장소의 `CNAME` 파일을 사용하지 않는다.

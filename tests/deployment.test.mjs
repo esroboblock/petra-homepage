@@ -11,9 +11,9 @@ import astroConfig from '../astro.config.mjs';
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const workflowPath = resolve(repositoryRoot, '.github/workflows/deploy-pages.yml');
 
-test('Astro builds assets for the GitHub Pages project-site path', () => {
-  assert.equal(astroConfig.site, 'https://esroboblock.github.io');
-  assert.equal(astroConfig.base, '/petra-homepage');
+test('Astro builds assets for the petra.parts root path', () => {
+  assert.equal(astroConfig.site, 'https://petra.parts');
+  assert.equal(astroConfig.base, '/');
   assert.equal(astroConfig.output, 'static');
 
   execFileSync('npm', ['run', 'build'], {
@@ -24,8 +24,8 @@ test('Astro builds assets for the GitHub Pages project-site path', () => {
 
   const html = readFileSync(resolve(repositoryRoot, 'dist/index.html'), 'utf8');
 
-  assert.match(html, /(?:href|src)="\/petra-homepage\/_astro\//);
-  assert.doesNotMatch(html, /(?:href|src)="\/_astro\//);
+  assert.match(html, /(?:href|src)="\/_astro\//);
+  assert.doesNotMatch(html, /(?:href|src)="\/petra-homepage\//);
 });
 
 test('Pages workflow validates pull requests and deploys only validated main pushes', () => {
